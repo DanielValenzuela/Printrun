@@ -76,7 +76,7 @@ class GCodeAnalyzer():
         return m.group(1)
     
   def Analyze(self, gcode):
-    gcode = gcode[:gcode.find(";")].lstrip() # remove comments
+    gcode = gcode.split(";")[0] # remove comments
     if gcode.startswith("@"): return # code is a host command
     code_g = self.findCode(gcode, "G")
     code_m = self.findCode(gcode, "M")
